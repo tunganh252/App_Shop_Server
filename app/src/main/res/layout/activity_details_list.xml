@@ -25,7 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="60dp"
         app:fabSize="normal"
         app:maxImageSize="35dp"
         app:srcCompat="@drawable/ic_add_playlist"

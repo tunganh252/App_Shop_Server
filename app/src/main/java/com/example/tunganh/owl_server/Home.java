@@ -32,11 +32,16 @@ import com.example.tunganh.owl_server.Display.ItemClickListener;
 import com.example.tunganh.owl_server.General.General;
 import com.example.tunganh.owl_server.Model.Category;
 import com.example.tunganh.owl_server.Order_status.Order_status;
+import com.example.tunganh.owl_server.Service.ListenOrder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -44,6 +49,7 @@ import com.google.firebase.storage.UploadTask;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 
+import java.util.Queue;
 import java.util.UUID;
 
 public class Home extends AppCompatActivity
@@ -125,6 +131,11 @@ public class Home extends AppCompatActivity
         recycler_menu.setLayoutManager(layoutManager);
 
         loadMenu();
+
+
+        ///// Call Service
+        Intent service= new Intent(Home.this,ListenOrder.class);
+        startService(service);
 
 
     }
@@ -369,6 +380,24 @@ public class Home extends AppCompatActivity
 
     /////////////  Đẩy danh sách sản phẩm chi tiết ////////////
     private void deleteCategory(String key, Category item) {
+
+            ////////// Call all products in Category
+        DatabaseReference proudcts=database.getReference("Details");
+        Query productInCategory=proudcts.orderByChild("menuId").equalTo(key);
+        productInCategory.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapShot:dataSnapshot.getChildren())
+                {
+                    postSnapShot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         categories.child(key).removeValue();
         Toast.makeText(this, "Item Deleted !!!", Toast.LENGTH_SHORT).show();
