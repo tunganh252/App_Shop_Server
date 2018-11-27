@@ -8,7 +8,13 @@ import android.widget.TextView;
 import com.example.tunganh.owl_server.Display.ItemClickListener;
 import com.example.tunganh.owl_server.R;
 
-public class OrderAdapterView extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
+public class OrderAdapterView extends RecyclerView.ViewHolder implements View.OnClickListener,
+
+        View.OnLongClickListener,
+        View.OnCreateContextMenuListener {
+
+
+
     public TextView tv_order_id, tv_order_status, tv_order_name, tv_order_phone, tv_order_address, tv_order_email;
 
     private ItemClickListener itemClickListener;
@@ -24,6 +30,7 @@ public class OrderAdapterView extends RecyclerView.ViewHolder implements View.On
         tv_order_address = itemView.findViewById(R.id.order_address);
 
         itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
         itemView.setOnCreateContextMenuListener(this);
 
     }
@@ -43,5 +50,11 @@ public class OrderAdapterView extends RecyclerView.ViewHolder implements View.On
 
         contextMenu.add(0,0,getAdapterPosition(),"Update");
         contextMenu.add(0,1,getAdapterPosition(),"Delete");
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        itemClickListener.onClick(view,getAdapterPosition(),true);
+        return true;
     }
 }

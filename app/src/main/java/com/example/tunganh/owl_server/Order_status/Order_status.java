@@ -1,6 +1,7 @@
 package com.example.tunganh.owl_server.Order_status;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.example.tunganh.owl_server.AdapterView.OrderAdapterView;
 import com.example.tunganh.owl_server.Display.ItemClickListener;
 import com.example.tunganh.owl_server.General.General;
 import com.example.tunganh.owl_server.Model.Order_Details;
+import com.example.tunganh.owl_server.Order_detail;
 import com.example.tunganh.owl_server.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -77,9 +79,18 @@ public class Order_status extends AppCompatActivity {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
 
+/////////////////////////////// Google Map Direction Shipping /////////////////////////////////////////////
 //                        Intent delivery_location= new Intent(Order_status.this,Delivery_Location.class);
 //                        General.currentOrder_Details=model;
 //                        startActivity(delivery_location);
+
+                        Intent orderDetail = new Intent(Order_status.this,Order_detail.class);
+                        General.currentOrder_Details=model;
+                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
+                        startActivity(orderDetail);
+
+
+
 
                     }
                 });
