@@ -3,21 +3,23 @@ package com.example.tunganh.owl_server.AdapterView;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tunganh.owl_server.Display.ItemClickListener;
 import com.example.tunganh.owl_server.R;
 
-public class OrderAdapterView extends RecyclerView.ViewHolder implements View.OnClickListener,
+public class OrderAdapterView extends RecyclerView.ViewHolder {
+//        implements View.OnClickListener,
+//
+//        View.OnLongClickListener,
+//        View.OnCreateContextMenuListener {
 
-        View.OnLongClickListener,
-        View.OnCreateContextMenuListener {
-
-
+    public Button bt__edit,bt_remove,bt_detail, bt_direction;
 
     public TextView tv_order_id, tv_order_status, tv_order_name, tv_order_phone, tv_order_address, tv_order_email;
 
-    private ItemClickListener itemClickListener;
+//    private ItemClickListener itemClickListener;
 
     public OrderAdapterView(View itemView) {
         super(itemView);
@@ -29,32 +31,41 @@ public class OrderAdapterView extends RecyclerView.ViewHolder implements View.On
         tv_order_email = itemView.findViewById(R.id.order_email);
         tv_order_address = itemView.findViewById(R.id.order_address);
 
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
-        itemView.setOnCreateContextMenuListener(this);
+
+
+        bt__edit=itemView.findViewById(R.id.bt_edit);
+        bt_remove=itemView.findViewById(R.id.bt_remove);
+        bt_detail=itemView.findViewById(R.id.bt_detail);
+        bt__edit=itemView.findViewById(R.id.bt_edit);
+
+
+
+//        itemView.setOnClickListener(this);
+//        itemView.setOnLongClickListener(this);
+//        itemView.setOnCreateContextMenuListener(this);
 
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
-
-    @Override
-    public void onClick(View view) {
-        itemClickListener.onClick(view, getAdapterPosition(), false);
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu contextMenu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        contextMenu.setHeaderTitle("Select Action");
-
-        contextMenu.add(0,0,getAdapterPosition(),"Update");
-        contextMenu.add(0,1,getAdapterPosition(),"Delete");
-    }
-
-    @Override
-    public boolean onLongClick(View view) {
-        itemClickListener.onClick(view,getAdapterPosition(),true);
-        return true;
-    }
+//    public void setItemClickListener(ItemClickListener itemClickListener) {
+//        this.itemClickListener = itemClickListener;
+//    }
+//
+//    @Override
+//    public void onClick(View view) {
+//        itemClickListener.onClick(view, getAdapterPosition(), false);
+//    }
+//
+//    @Override
+//    public void onCreateContextMenu(ContextMenu contextMenu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        contextMenu.setHeaderTitle("Select Action");
+//
+//        contextMenu.add(0,0,getAdapterPosition(),"Update");
+//        contextMenu.add(0,1,getAdapterPosition(),"Delete");
+//    }
+//
+//    @Override
+//    public boolean onLongClick(View view) {
+//        itemClickListener.onClick(view,getAdapterPosition(),true);
+//        return true;
+//    }
 }

@@ -41,7 +41,6 @@ public class Order_status extends AppCompatActivity {
         setContentView(R.layout.activity_order_status);
 
 
-
         //// Firebase
         db = FirebaseDatabase.getInstance();
         order_details = db.getReference("Order_Details");
@@ -66,7 +65,7 @@ public class Order_status extends AppCompatActivity {
 
         ) {
             @Override
-            protected void populateViewHolder(OrderAdapterView viewHolder, final Order_Details model, int position) {
+            protected void populateViewHolder(OrderAdapterView viewHolder, final Order_Details model, final int position) {
 
                 viewHolder.tv_order_id.setText(adapter.getRef(position).getKey());
                 viewHolder.tv_order_status.setText(General.convertCodetoStatus(model.getStatus()));
@@ -75,25 +74,43 @@ public class Order_status extends AppCompatActivity {
                 viewHolder.tv_order_email.setText(model.getEmail());
                 viewHolder.tv_order_address.setText(model.getAddress());
 
-                viewHolder.setItemClickListener(new ItemClickListener() {
+                /////////// New event button
+                viewHolder.bt__edit.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
+                    public void onClick(View v) {
 
-/////////////////////////////// Google Map Direction Shipping /////////////////////////////////////////////
-//                        Intent delivery_location= new Intent(Order_status.this,Delivery_Location.class);
-//                        General.currentOrder_Details=model;
-//                        startActivity(delivery_location);
-
-                        Intent orderDetail = new Intent(Order_status.this,Order_detail.class);
-                        General.currentOrder_Details=model;
-                        orderDetail.putExtra("OrderId",adapter.getRef(position).getKey());
-                        startActivity(orderDetail);
-
-
-
+                        showUpdateDialog(adapter.getRef(position).getKey(), adapter.getItem(position));
 
                     }
                 });
+                viewHolder.bt_remove.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteOrder(adapter.getRef(position).getKey());
+                    }
+                });
+
+                viewHolder.bt_detail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent orderDetail = new Intent(Order_status.this, Order_detail.class);
+                        General.currentOrder_Details = model;
+                        orderDetail.putExtra("OrderId", adapter.getRef(position).getKey());
+                        startActivity(orderDetail);
+                    }
+                });
+
+//                viewHolder.bt_direction.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        /////////////////////////////// Google Map Direction Shipping /////////////////////////////////////////////
+////                        Intent delivery_location= new Intent(Order_status.this,Delivery_Location.class);
+////                        General.currentOrder_Details=model;
+////                        startActivity(delivery_location);
+//                    }
+//                });
+
+
             }
         };
         adapter.notifyDataSetChanged();
@@ -139,6 +156,7 @@ public class Order_status extends AppCompatActivity {
                 item.setStatus(String.valueOf(spinner.getSelectedIndex()));
 
                 order_details.child(localKey).setValue(item);
+                adapter.notifyDataSetChanged(); /// Add to update item size
 
             }
         });
@@ -157,6 +175,7 @@ public class Order_status extends AppCompatActivity {
 
     private void deleteOrder(String key) {
         order_details.child(key).removeValue();
+        adapter.notifyDataSetChanged();
     }
 
 

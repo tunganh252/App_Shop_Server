@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="215dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="255dp"
     android:layout_margin="12dp"
-    app:cardElevation="4dp"
     android:background="#FFF"
-    app:cardCornerRadius="5dp"
+    android:elevation="20dp"
     android:scrollbars="vertical"
-    android:elevation="20dp">
+    app:cardCornerRadius="5dp"
+    app:cardElevation="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,6 @@
             android:background="#258a97" />
 
 
-
     </RelativeLayout>
 
     <LinearLayout
@@ -39,9 +38,9 @@
 
         <View
             android:layout_width="7dp"
-            android:layout_marginLeft="15dp"
             android:layout_height="22dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
             android:background="#10336c" />
 
         <LinearLayout
@@ -74,10 +73,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/font_a"
-                    android:textColor="#37428b"
                     android:gravity="center_vertical|start"
                     android:text="#9999999"
                     android:textAllCaps="true"
+                    android:textColor="#37428b"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -85,9 +84,9 @@
 
 
             <LinearLayout
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
 
@@ -109,9 +108,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/font_a"
                     android:gravity="center_vertical|start"
                     android:text="Status"
-                    android:fontFamily="@font/font_a"
                     android:textAllCaps="true"
                     android:textColor="#85a632"
                     android:textSize="16sp"
@@ -123,9 +122,9 @@
 
 
             <LinearLayout
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -146,9 +145,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/font_a"
                     android:gravity="center_vertical|start"
                     android:text="Name"
-                    android:fontFamily="@font/font_a"
                     android:textAllCaps="true"
                     android:textColor="#85a632"
                     android:textSize="16sp"
@@ -161,9 +160,9 @@
 
 
             <LinearLayout
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -184,12 +183,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/font_a"
                     android:gravity="center_vertical|start"
                     android:text="123456789"
                     android:textAllCaps="true"
                     android:textColor="#85a632"
                     android:textSize="16sp"
-                    android:fontFamily="@font/font_a"
                     android:textStyle="italic"
 
                     />
@@ -198,9 +197,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -221,11 +220,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/font_a"
                     android:gravity="center_vertical|start"
                     android:text="admin@gmail.com"
                     android:textColor="#85a632"
                     android:textSize="16sp"
-                    android:fontFamily="@font/font_a"
                     android:textStyle="italic"
 
                     />
@@ -235,9 +234,9 @@
 
 
             <LinearLayout
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -258,12 +257,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|start"
-                    android:text="Address"
-                    android:maxLines="3"
                     android:layout_marginBottom="5dp"
-                    android:textColor="#85a632"
                     android:fontFamily="@font/font_a"
+                    android:gravity="center_vertical|start"
+                    android:maxLines="2"
+                    android:text="Address"
+                    android:textColor="#85a632"
                     android:textSize="16sp"
                     android:textStyle="italic"
 
@@ -272,8 +271,56 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_weight="4"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+
+                <Button
+                    android:id="@+id/bt_edit"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:background="#00ffffff"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit" />
+
+                <Button
+                    android:id="@+id/bt_remove"
+                    android:gravity="center_vertical"
+                    android:background="#00ffffff"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remove" />
+
+                <Button
+                    android:id="@+id/bt_detail"
+                    android:gravity="center"
+                    android:background="#00ffffff"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail" />
+
+                <Button
+                    android:id="@+id/bt_direction"
+                    android:background="#00ffffff"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Direction" />
+
+            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
+
+
 </android.support.v7.widget.CardView>
