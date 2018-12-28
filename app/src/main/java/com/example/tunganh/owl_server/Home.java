@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -79,7 +80,6 @@ public class Home extends AppCompatActivity
     DrawerLayout drawer;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +122,7 @@ public class Home extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         tv_Fullname = headerView.findViewById(R.id.tv_Fullname);
         tv_Fullname.setText(General.currentUser.getName());
+
 
 
         /// Init View
@@ -174,7 +175,7 @@ public class Home extends AppCompatActivity
         alertDialog.setIcon(R.drawable.ic_edit_black_24dp);
 
         /// Set button
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -188,7 +189,7 @@ public class Home extends AppCompatActivity
 
             }
         });
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -198,7 +199,12 @@ public class Home extends AppCompatActivity
             }
         });
         alertDialog.show();
+
+
+
     }
+
+
 
     private void uploadImage() {
 
